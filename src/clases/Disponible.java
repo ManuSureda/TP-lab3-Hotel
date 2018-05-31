@@ -36,4 +36,14 @@ public class Disponible {
 			return "Ocupada";
 		}
 	}
+	
+	public boolean getDisponi()
+	{
+		boolean rta=false;
+		if (disponibilidad)
+		{
+			rta=true;
+		}
+		return rta;
+	}
 }
