@@ -15,6 +15,42 @@ public class Habitacion {
 	private double costo;
 	
 	
+	public boolean getDispo()
+	{
+		boolean rta=false;
+		
+		if (disponible.getDisponi())
+		{
+			rta=true;
+		}
+		
+		return rta;
+	}
+	
+	public int getNumero() {
+		return numero;
+	}
+
+	public void setNumero(int numero) {
+		this.numero = numero;
+	}
+
+	public int getCapacidad() {
+		return capacidad;
+	}
+
+	public void setCapacidad(int capacidad) {
+		this.capacidad = capacidad;
+	}
+
+	public double getCosto() {
+		return costo;
+	}
+
+	public void setCosto(double costo) {
+		this.costo = costo;
+	}
+
 	public Habitacion(int numeroParam, int capacidadParam, double costoParam) {
 		
 		numero = numeroParam;
@@ -25,13 +61,13 @@ public class Habitacion {
 	}
 	
 	public void mostrarHabitacion() {
-		
+		System.out.println("----------------");
 		System.out.println("Numero de habitacion: "+numero);
 		System.out.println("Capacidad de la habitacion: "+capacidad);
 		System.out.println("Estado: "+disponible.getDisponibilidad());
 		System.out.println("Costo por noche: $"+costo);
 		System.out.println("Fechas ocupadas: ");
-		
+		System.out.println("----------------");
 		Iterator<Fechas> it = fechasOcupacion.iterator();
 		while(it.hasNext()) {
 			Fechas fechita = it.next();
@@ -55,5 +91,7 @@ public class Habitacion {
 		return false;
 		
 	}
+	
+	
 
 }
