@@ -9,14 +9,10 @@ import java.util.Map.Entry;
 public class Hotel {
 	private String nombre;
 	private String direccion; 
-	private Empleado recepcionista;
-	private ArrayList<Reserva> reservasNuevas;
-	private ArrayList<Reserva> reservasViejas;  
+	private Recepcionista recepcionista;
+	private HashMap<Integer,Reserva> reservas;
 	private HashMap<Integer,Habitacion> habitaciones; 
-	private ArrayList<Pasajero> registroPasajeros; 
-	
-	
-	
+	private ArrayList<Pasajero> registroPasajeros; 	
 	
 	public String getNombre() {
 		return nombre;
@@ -34,9 +30,49 @@ public class Hotel {
 		this.direccion = direccion;
 	}
 
-	public Hotel() 
-	{
+	
+
+	public Recepcionista getRecepcionista() {
+		return recepcionista;
+	}
+
+	public void setRecepcionista(Recepcionista recepcionista) {
+		this.recepcionista = recepcionista;
+	}
+
+	public HashMap<Integer,Reserva> getReservas() {
+		return reservas;
+	}
+
+	public void setReservas(HashMap<Integer,Reserva> reservas) {
+		this.reservas = reservas;
+	}
+
+	public HashMap<Integer, Habitacion> getHabitaciones() {
+		return habitaciones;
+	}
+
+	public void setHabitaciones(HashMap<Integer, Habitacion> habitaciones) {
+		this.habitaciones = habitaciones;
+	}
+
+	public ArrayList<Pasajero> getRegistroPasajeros() {
+		return registroPasajeros;
+	}
+
+	public void setRegistroPasajeros(ArrayList<Pasajero> registroPasajeros) {
+		this.registroPasajeros = registroPasajeros;
+	}
+
+	public Hotel(String nombre, String direccion, Recepcionista recepcionista, HashMap<Integer,Reserva> reservas,
+			HashMap<Integer, Habitacion> habitaciones, ArrayList<Pasajero> registroPasajeros) {
 		
+		this.nombre = nombre;
+		this.direccion = direccion;
+		this.recepcionista = recepcionista;
+		this.reservas = reservas;
+		this.habitaciones = habitaciones;
+		this.registroPasajeros = registroPasajeros;
 	}
 
 	public void addHabitacion(Habitacion h)
@@ -44,12 +80,9 @@ public class Hotel {
 		habitaciones.put(h.getNumero(), h);
 	}
 	
-	public void mostrarHotel()
+	public String mostrarHotel()
 	{
-		System.out.println("--------------");
-		System.out.println("Nombre: "+nombre);
-		System.out.println("Direccion: "+direccion);
-		System.out.println("--------------");
+		return nombre+"\nDireccion: "+direccion;
 	}
 	
 	public void mostrarDisponibles()
@@ -92,29 +125,6 @@ public class Hotel {
 		
 	}
 
-	public void verReservaNueva(Pasajero p)
-	{
-		
-		for (Reserva aux:reservasNuevas)
-		{
-			if (aux.buscarPasajero(p))
-			{
-				aux.mostrarReserva();
-			}
-		}
-	}
 	
-	public void verReservaVieja(Pasajero p)
-	{
-		for (Reserva aux:reservasViejas)
-		{
-			if (aux.buscarPasajero(p))
-			{
-				aux.mostrarReserva();
-			}
-		}
-	}
-	
-
 
 }

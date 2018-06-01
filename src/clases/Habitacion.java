@@ -40,6 +40,16 @@ public class Habitacion {
 		return numero;
 	}
 
+	
+	
+	public Disponible getDisponible() {
+		return disponible;
+	}
+
+	public void setDisponible(Disponible disponible) {
+		this.disponible = disponible;
+	}
+
 	public void setNumero(int numero) {
 		this.numero = numero;
 	}

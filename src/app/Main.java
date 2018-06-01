@@ -1,11 +1,5 @@
 package app;
 
-import java.util.Scanner; 
-
-import clases.Administrador;
-import clases.Cliente;
-import clases.Loguin;
-import clases.Pasajero;
 
 public class Main {
 
