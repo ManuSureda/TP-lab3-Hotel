@@ -1,5 +1,7 @@
 package clases;
 
+import java.util.ArrayList;
+
 public class Pasajero {
 
 	private String nombre;
@@ -7,6 +9,8 @@ public class Pasajero {
     private String DNI;
     private String direccion;
     private String telefono;
+    private boolean listNegra;
+    private ArrayList<Registro> listaRegistro;
     
     public Pasajero(String nomb,String apell,String dni,String direc,String tel)
     {
@@ -15,6 +19,8 @@ public class Pasajero {
     	DNI=dni;
     	direccion=direc;
     	telefono=tel;
+    	listaRegistro = new ArrayList<Registro>();
+    	listNegra = false;
     }
 
 	public String getNombre() {
@@ -39,6 +45,16 @@ public class Pasajero {
 
 	public void setDNI(String dNI) {
 		DNI = dNI;
+	}
+	
+	public void setListNegra(boolean a) {
+		listNegra = a;
+	}
+	
+	@Override
+	public String toString() {
+		// TODO Auto-generated method stub
+		return "Nombre: "+nombre+" \nApellido: "+apellido+"\nDNI: "+DNI+"\nDireccion: "+direccion+"\nTelefono: "+telefono;
 	}
     
 }
