@@ -115,6 +115,10 @@ public class Hotel {
 		}
 	}
 	
+	public HashMap getMapHabitacion()
+	{
+		return habitaciones;
+	}
 
 
 }

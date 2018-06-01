@@ -13,10 +13,17 @@ public class Administrador extends Usuario{
 	public void eliminarUsuario(String name,Loguin log)
 	{
 	  Usuario aux=log.buscarUser(name);
-	  if(aux!=null)
-	  {
-		 log.eliminar(aux);
-		 System.out.println("El ususario ha sido eliminado");
+	  if(aux!=null )
+	  { 	 if(aux instanceof Empleado)
+		  	  {
+			  	log.eliminar(aux);
+				 System.out.println("El empleado fue eliminado");
+		  	  }
+			  else if(aux instanceof Cliente)
+			  {	
+				  log.eliminar(aux);
+				  System.out.println("El Cliente fue eliminado");	  
+			  }
 	  }
 	  else if(aux==null)
 	  {

@@ -1,5 +1,11 @@
 package clases;
 
+import java.util.ArrayList;
+import java.util.Date;
+import java.util.HashMap;
+import java.util.Iterator;
+import java.util.Map;
+
 public class Usuario {
 	
 	private String user;
@@ -31,6 +37,24 @@ public class Usuario {
 		this.pass = pass;
 	}
 	
+	public void habitacionesDisponibles(Date inicio, Date fin,Hotel hotel)
+	{
+		HashMap <Integer,Habitacion> habitaciones= hotel.getMapHabitacion();
+		Habitacion aux;
+		Iterator it = habitaciones.entrySet().iterator();
+		System.out.println("Habitaciones disponibles");
+		while(it.hasNext())
+		{
+			Map.Entry entry=(Map.Entry)it.next();
+			aux=(Habitacion)entry.getValue();
+			if(aux.getDispo() && aux.revisarFechas(inicio,fin))
+			{
+				aux.mostrarHabitacion();
+				
+			}
+		}
+		
+	}
 	
 	
 }
