@@ -42,6 +42,31 @@ public class Fechas {
 	public void setFechaOut(Date fechaOut) {
 		this.fechaOut = fechaOut;
 	}
+	
+	public int getDayIN() {
+		return fechaIn.getDate();
+	}
+	
+	public int getYearIN() {
+		return fechaIn.getYear();
+	}
+	
+	public int getMonthIN() {
+		return fechaIn.getMonth();
+	}
+	
+	public int getDayOUT() {
+		return fechaOut.getDate();
+	}
+	
+	public int getMonthOUT() {
+		return fechaOut.getMonth();
+	}
+	
+	public int getYearOUT() {
+		return fechaOut.getYear();
+	}
+	
 
 
 }
