@@ -14,6 +14,15 @@ public class Habitacion {
 	private ArrayList<Fechas> fechasOcupacion;
 	private double costo;
 	
+
+	public Habitacion(int numeroParam, int capacidadParam, double costoParam) {
+		
+		numero = numeroParam;
+		capacidad = capacidadParam;
+		costo = costoParam;
+		disponible = new Disponible();
+		fechasOcupacion = new ArrayList<Fechas>();
+	}
 	
 	public boolean getDispo()
 	{
@@ -50,14 +59,20 @@ public class Habitacion {
 	public void setCosto(double costo) {
 		this.costo = costo;
 	}
-
-	public Habitacion(int numeroParam, int capacidadParam, double costoParam) {
+	
+	public void getfechasOcupacion() {
 		
-		numero = numeroParam;
-		capacidad = capacidadParam;
-		costo = costoParam;
-		disponible = new Disponible();
-		fechasOcupacion = new ArrayList<Fechas>();
+		System.out.println("Fechas ocupadas: ");
+		Iterator<Fechas> it = fechasOcupacion.iterator();
+		while(it.hasNext()) {
+			Fechas fechita = it.next();
+			System.out.println("                "+fechita.getFechaIn()+" al " +fechita.getFechaOut());			
+		}	
+		
+	}
+	
+	public ArrayList<Fechas> getfechasOcupacionArray(){
+		return fechasOcupacion;
 	}
 	
 	public void mostrarHabitacion() {
