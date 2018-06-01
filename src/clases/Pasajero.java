@@ -53,6 +53,22 @@ public class Pasajero {
 		listNegra = a;
 	}
 	
+	
+	
+	public ArrayList<Registro> getListaRegistro() {
+		return listaRegistro;
+	}
+	
+	public Registro getUltimoRegistro()
+	{
+		int i=listaRegistro.size();
+		return listaRegistro.get(i-1);
+	}
+
+	public void setListaRegistro(ArrayList<Registro> listaRegistro) {
+		this.listaRegistro = listaRegistro;
+	}
+
 	@Override
 	public String toString() {
 		// TODO Auto-generated method stub
