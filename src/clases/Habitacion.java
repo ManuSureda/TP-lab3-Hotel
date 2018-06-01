@@ -85,12 +85,46 @@ public class Habitacion {
 		fechasOcupacion.add(fechita);
 	}
 	
-	public boolean revisarFechas (Date e) {
-		
-		
-		return false;
-		
-	}
+	 public boolean revisarFechas(Date ini,Date fin)
+     {  
+    	 Iterator it= fechasOcupacion.iterator();
+    	 Fechas aux;
+    	 Fechas proxima;
+    	 boolean flag =true;
+    	 
+	    	 while(it.hasNext() && flag!=false)
+	    	 {
+	    		 aux=(Fechas) it.next();
+	    		 if(fin.before(aux.getFechaInDate()) || ini.after(aux.getFechaOutDate()))
+	    		 {
+	    			 if(ini.after(aux.getFechaOutDate()))
+	     			{
+	     				while(it.hasNext())
+	     				{
+	     					proxima=(Fechas)it.next();
+	     					
+	     					if(fin.after(proxima.getFechaInDate()))
+	     					{
+	     						flag=false;
+	     						
+	     					}
+	     					if(ini.after(proxima.getFechaOutDate()))
+	     					{
+	     						flag=true;
+	     						break;
+	     					}					
+	     				}
+	     			} 
+	    		 }    		
+	    		 else     			
+	    		 {	     			    			 
+	    			 flag=false;
+	     		 }
+    		 
+	     	 }
+     	 return flag;
+    	 }
+    	
 	
 	
 

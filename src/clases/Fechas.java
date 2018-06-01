@@ -67,6 +67,14 @@ public class Fechas {
 		return fechaOut.getYear();
 	}
 	
+	public Date getFechaInDate()
+	{
+		return fechaIn;
+	}
+	public Date getFechaOutDate()
+	{
+		return fechaOut;
+	}
 
 
 }
