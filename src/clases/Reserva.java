@@ -6,7 +6,7 @@ public class Reserva {
 	private ArrayList<Pasajero> pasajeros;
 	private double costo; 
 	private boolean usada; 
-	private int id;
+	private int id;//tambien puede ser por dni
 	private static int cantId;
 	
 	public Reserva(ArrayList<Pasajero> pasajeros, double costo, boolean usada) 
@@ -17,8 +17,6 @@ public class Reserva {
 		this.id = cantId+1;
 		cantId++;
 	}
-
-	
 	
 	public ArrayList<Pasajero> getPasajeros() {
 		return pasajeros;
@@ -50,7 +48,7 @@ public class Reserva {
 
 
 
-	public void setUsada() {
+	public void usar() {
 		usada=true;
 	}
 
@@ -77,7 +75,7 @@ public class Reserva {
 	
 	public void mostrarReserva()
 	{
-		System.out.println("-----------------");
+		//System.out.println("-----------------");
 		for (Pasajero aux:pasajeros)
 		{
 			aux.toString();

@@ -14,7 +14,7 @@ public class Administrador extends Usuario{
 	{
 	  Usuario aux=log.buscarUser(name);
 	  if(aux!=null )
-	  { 	 if(aux instanceof Empleado)
+	  { 	 if(aux instanceof Recepcionista)
 		  	  {
 			  	log.eliminar(aux);
 				 System.out.println("El empleado fue eliminado");
