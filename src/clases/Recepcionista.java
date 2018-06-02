@@ -64,15 +64,52 @@ public class Recepcionista extends Usuario {
 		}
 		else
 		{
+			
 			aux=h.getReservas().get(idOdni);
-			aux.usar();
-			auxp=aux.getPasajeros().get(0);
-			auxH=auxp.getUltimoRegistro().getHabitaciones();
-			for (Habitacion aux2:auxH)
+			if (!aux.getUsada())
 			{
-				aux2.getDisponible().ocupar("usada");
+				aux.usar();
+				auxp=aux.getPasajeros().get(0);
+				auxH=auxp.getUltimoRegistro().getHabitaciones();
+				for (Habitacion aux2:auxH)
+				{
+					aux2.getDisponible().ocupar("usada");
+				}
+				rta=true;
 			}
-			rta=true;
+			
+			return rta;
+		}	
+	}
+	
+	public boolean checkOut (int idOdni, Hotel h)
+	{
+		Reserva aux;
+		Pasajero auxp;
+		ArrayList <Habitacion> auxH=new ArrayList<>();
+		boolean rta=false;
+		if (!h.getReservas().containsKey(idOdni))//significa que no mandaron una id, sino un dni
+		{
+			idOdni= buscarReservaDNI(idOdni,h);
+		}
+		if (idOdni==-1)
+		{
+			return rta;
+		}
+		else
+		{
+			aux=h.getReservas().get(idOdni);
+			if (!aux.getUsada())
+			{
+				auxp=aux.getPasajeros().get(0);
+				auxH=auxp.getUltimoRegistro().getHabitaciones();
+				for (Habitacion aux2:auxH)
+				{
+					aux2.getDisponible().desocupar();
+				}
+				rta=true;
+			}
+			
 			return rta;
 		}	
 	}

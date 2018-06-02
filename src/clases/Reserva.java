@@ -52,7 +52,26 @@ public class Reserva {
 		usada=true;
 	}
 
+	public boolean getUsada()
+	{
+		return usada;
+	}
 
+	public static int getCantId() {
+		return cantId;
+	}
+
+	public static void setCantId(int cantId) {
+		Reserva.cantId = cantId;
+	}
+
+	public void setUsada(boolean usada) {
+		this.usada = usada;
+	}
+
+	public void setId(int id) {
+		this.id = id;
+	}
 
 	public int getId() {
 		return id;
