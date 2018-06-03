@@ -86,7 +86,7 @@ public class Menu {
     public void Switch()
     {   harcodeados();
     	System.out.println("Bienvenido al Hotel Olimpia");
-    	System.out.println("1- Registro de usuario.\n2- Ingresar al Sistema.\n3- Salir\n\nIngrese su opcion:");
+    	System.out.print("1- Registro de usuario.\n2- Ingresar al Sistema.\n3- Salir\n\nIngrese su opcion:");
         variable=scan.nextInt();
     	while(variable!=-1)
     	{   
@@ -111,7 +111,7 @@ public class Menu {
     
     public void switchAdmin()
     {   int aux=0;
-    	System.out.println("\tMENU ADMINISTRADOR\n1- Eliminar un usuario\n2-Menu comun\nElija su opcion: ");
+    	System.out.print("\tMENU ADMINISTRADOR\n1- Eliminar un usuario\n2-Menu comun\nElija su opcion: ");
         aux=scan.nextInt();
     	while(aux!=-1)
     	{   
