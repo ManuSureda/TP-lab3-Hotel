@@ -54,6 +54,7 @@ public class Menu {
 			  direc=scan.next();
 			  System.out.print("Ingrese su telefono: ");
 			  telefono=scan.next();
+<<<<<<< HEAD
 			  
 			  /*add exceptions*/
 			  
@@ -61,6 +62,12 @@ public class Menu {
 			  
 			  
 			  
+=======
+			  System.out.println();
+			  logueo.registro(us, pas, nombre, apellido, dni, direc,telefono);
+			  
+			  
+>>>>>>> ed8aa34b88eef03def83bdb0dbd5f7a09d5fd157
 		  }
     	
     }
@@ -91,26 +98,31 @@ public class Menu {
     }
     public void Switch()
     {   harcodeados();
+        char corte;
     	System.out.println("Bienvenido al Hotel Olimpia");
-    	System.out.print("1- Registro de usuario.\n2- Ingresar al Sistema.\n3- Salir\n\nIngrese su opcion:");
-        variable=scan.nextInt();
-    	while(variable!=-1)
-    	{   
     	
+    	while(variable!=-1 )
+    	{   
+    		System.out.print("1- Registro de usuario.\n2- Ingresar al Sistema.\n3- Salir\n\nIngrese su opcion:");
+            variable=scan.nextInt();
     		switch(variable)
     		{ 
     		
     		  case 1:
     			 registroManual();
+    			 variable=0;
     			  break;
     		  case 2:
     			   ingreso();
+    			   variable=0;
     				break;	
     		 case 3: 
     			 System.out.println("Gracias por haber vistado el Hotel Olimpia!");
     			  variable=-1;
     				
     		}
+    		
+    			
     			
     	}
     }
