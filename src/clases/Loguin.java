@@ -54,6 +54,7 @@ public class Loguin {
 		Cliente aux=new Cliente(usuario,pas,p);
 		addUsuario(aux);
 	}
+	
 	public boolean verificarUsuario(String use)
 	{
 		Iterator<Usuario> it = listaUsuario.iterator();

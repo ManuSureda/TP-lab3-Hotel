@@ -1,5 +1,6 @@
 package app;
 
+import java.util.Date;
 import java.util.Scanner;
 import clases.Administrador;
 import clases.Cliente;
@@ -53,7 +54,12 @@ public class Menu {
 			  direc=scan.next();
 			  System.out.print("Ingrese su telefono: ");
 			  telefono=scan.next();
+			  
+			  /*add exceptions*/
+			  
 			  logueo.registro(us, pas, nombre, apellido, dni, direc,telefono);
+			  
+			  
 			  
 		  }
     	
@@ -141,6 +147,9 @@ public class Menu {
     	maxi.eliminarUsuario(nombre,logueo);
     }
 	
-	
+    
+    
+    	
+    
 	
 }
