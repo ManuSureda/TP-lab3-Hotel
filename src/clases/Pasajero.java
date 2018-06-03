@@ -6,14 +6,14 @@ public class Pasajero {
 
 	private String nombre;
     private String apellido;
-    private String DNI;
+    private int DNI;
     private String direccion;
     private String telefono;
     private boolean listNegra;
     private ArrayList<Registro> listaRegistro;
 
     
-    public Pasajero(String nomb,String apell,String dni,String direc,String tel)
+    public Pasajero(String nomb,String apell,int dni,String direc,String tel)
     {
     	nombre=nomb;
     	apellido=apell;
@@ -41,11 +41,11 @@ public class Pasajero {
 		this.apellido = apellido;
 	}
 
-	public String getDNI() {
+	public int getDNI() {
 		return DNI;
 	}
 
-	public void setDNI(String dNI) {
+	public void setDNI(int dNI) {
 		DNI = dNI;
 	}
 	
@@ -80,18 +80,19 @@ public class Pasajero {
 		return listNegra;
 	}
 
-	@Override
-	public int hashCode() {
-		final int prime = 31;
-		int result = 1;
-		result = prime * result + ((DNI == null) ? 0 : DNI.hashCode());
-		result = prime * result + ((apellido == null) ? 0 : apellido.hashCode());
-		result = prime * result + ((direccion == null) ? 0 : direccion.hashCode());
-		result = prime * result + (listNegra ? 1231 : 1237);
-		result = prime * result + ((nombre == null) ? 0 : nombre.hashCode());
-		result = prime * result + ((telefono == null) ? 0 : telefono.hashCode());
-		return result;
-	}
+//	@Override
+//	public int hashCode() {
+//		final int prime = 31;
+//		int result = 1;
+//		result = prime * result + DNI;
+//		result = prime * result + ((apellido == null) ? 0 : apellido.hashCode());
+//		result = prime * result + ((direccion == null) ? 0 : direccion.hashCode());
+//		result = prime * result + (listNegra ? 1231 : 1237);
+//		result = prime * result + ((listaRegistro == null) ? 0 : listaRegistro.hashCode());
+//		result = prime * result + ((nombre == null) ? 0 : nombre.hashCode());
+//		result = prime * result + ((telefono == null) ? 0 : telefono.hashCode());
+//		return result;
+//	}
 
 	@Override
 	public boolean equals(Object obj) {
@@ -102,10 +103,7 @@ public class Pasajero {
 		if (getClass() != obj.getClass())
 			return false;
 		Pasajero other = (Pasajero) obj;
-		if (DNI == null) {
-			if (other.DNI != null)
-				return false;
-		} else if (!DNI.equals(other.DNI))
+		if (DNI != other.DNI)
 			return false;
 		if (apellido == null) {
 			if (other.apellido != null)
@@ -119,6 +117,11 @@ public class Pasajero {
 			return false;
 		if (listNegra != other.listNegra)
 			return false;
+		if (listaRegistro == null) {
+			if (other.listaRegistro != null)
+				return false;
+		} else if (!listaRegistro.equals(other.listaRegistro))
+			return false;
 		if (nombre == null) {
 			if (other.nombre != null)
 				return false;
@@ -131,6 +134,60 @@ public class Pasajero {
 			return false;
 		return true;
 	}
+
+//	@Override
+//	public int hashCode() {
+//		final int prime = 31;
+//		int result = 1;
+//		result = prime * result + ((DNI == null) ? 0 : DNI.hashCode());
+//		result = prime * result + ((apellido == null) ? 0 : apellido.hashCode());
+//		result = prime * result + ((direccion == null) ? 0 : direccion.hashCode());
+//		result = prime * result + (listNegra ? 1231 : 1237);
+//		result = prime * result + ((nombre == null) ? 0 : nombre.hashCode());
+//		result = prime * result + ((telefono == null) ? 0 : telefono.hashCode());
+//		return result;
+//	}
+
+//	@Override
+//	public boolean equals(Object obj) {
+//		if (this == obj)
+//			return true;
+//		if (obj == null)
+//			return false;
+//		if (getClass() != obj.getClass())
+//			return false;
+//		Pasajero other = (Pasajero) obj;
+//		if (DNI == null) {
+//			if (other.DNI != null)
+//				return false;
+//		} else if (!DNI.equals(other.DNI))
+//			return false;
+//		if (apellido == null) {
+//			if (other.apellido != null)
+//				return false;
+//		} else if (!apellido.equals(other.apellido))
+//			return false;
+//		if (direccion == null) {
+//			if (other.direccion != null)
+//				return false;
+//		} else if (!direccion.equals(other.direccion))
+//			return false;
+//		if (listNegra != other.listNegra)
+//			return false;
+//		if (nombre == null) {
+//			if (other.nombre != null)
+//				return false;
+//		} else if (!nombre.equals(other.nombre))
+//			return false;
+//		if (telefono == null) {
+//			if (other.telefono != null)
+//				return false;
+//		} else if (!telefono.equals(other.telefono))
+//			return false;
+//		return true;
+//	}
+	
+	
 
 
 	

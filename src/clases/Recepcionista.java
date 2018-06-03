@@ -1,6 +1,8 @@
 package clases;
 
 import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.Map;
 
 public class Recepcionista extends Usuario {
 
@@ -19,33 +21,97 @@ public class Recepcionista extends Usuario {
 		return h.getReservas().get(id);
 	}
 	
-	public Reserva buscarReservaDNI(int dni, Hotel h)
+	public int buscarReservaDNI(int dni, Hotel h)
 	{
-		if (!h.getReservas().containsKey(dni))
-		{
-			return null;
-		}
-		else
-		return h.getReservas().get(dni);
+		int rta=-1;
+		
+		Reserva r;
+		Iterator it = h.getReservas().entrySet().iterator();
+        while(it.hasNext() && rta==-1) {
+            Map.Entry ent = (Map.Entry)it.next();
+            r = (Reserva)ent.getValue();
+            
+            
+            for (Pasajero aux:r.getPasajeros())
+            {
+            	if (aux.getDNI()==dni)
+            	{
+            		rta=dni;
+            		int flag=r.getPasajeros().size();
+            		aux=r.getPasajeros().get(flag-1);//esto es para que no siga iterando si no es necesario
+            	}
+            }
+            		
+            
+        }
+		
+		return rta;
 	}
 	
-	public void checkIn (int dni, Hotel h)
+	public boolean checkIn (int idOdni, Hotel h)
 	{
 		Reserva aux;
 		Pasajero auxp;
 		ArrayList <Habitacion> auxH=new ArrayList<>();
-		if (h.getReservas().containsKey(dni))
+		boolean rta=false;
+		if (!h.getReservas().containsKey(idOdni))//significa que no mandaron una id, sino un dni
 		{
-			aux=buscarReservaDNI(dni,h);
-			aux.setUsada();
-			auxp=aux.getPasajeros().get(0);
-			auxH=auxp.getUltimoRegistro().getHabitaciones();
-			for (Habitacion aux2:auxH)
-			{
-				aux2.getDisponible().ocupar("usada");
-			}
+			idOdni= buscarReservaDNI(idOdni,h);
 		}
-		
+		if (idOdni==-1)
+		{
+			return rta;
+		}
+		else
+		{
+			
+			aux=h.getReservas().get(idOdni);
+			if (!aux.getUsada())
+			{
+				aux.usar();
+				auxp=aux.getPasajeros().get(0);
+				auxH=auxp.getUltimoRegistro().getHabitaciones();
+				for (Habitacion aux2:auxH)
+				{
+					aux2.getDisponible().ocupar("usada");
+				}
+				rta=true;
+			}
+			
+			return rta;
+		}	
+	}
+	
+	public boolean checkOut (int idOdni, Hotel h)
+	{
+		Reserva aux;
+		Pasajero auxp;
+		ArrayList <Habitacion> auxH=new ArrayList<>();
+		boolean rta=false;
+		if (!h.getReservas().containsKey(idOdni))//significa que no mandaron una id, sino un dni
+		{
+			idOdni= buscarReservaDNI(idOdni,h);
+		}
+		if (idOdni==-1)
+		{
+			return rta;
+		}
+		else
+		{
+			aux=h.getReservas().get(idOdni);
+			if (!aux.getUsada())
+			{
+				auxp=aux.getPasajeros().get(0);
+				auxH=auxp.getUltimoRegistro().getHabitaciones();
+				for (Habitacion aux2:auxH)
+				{
+					aux2.getDisponible().desocupar();
+				}
+				rta=true;
+			}
+			
+			return rta;
+		}	
 	}
 	
 }
