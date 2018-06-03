@@ -48,8 +48,9 @@ public class Loguin {
 		}
 	}
 	
-	public void registro(String usuario,String pas,Pasajero p)
-	{
+	public void registro(String usuario,String pas,String nombre,String apellido,int dni,String direccion,String telefono)
+	{   
+		Pasajero p=new Pasajero(nombre,apellido,dni,direccion,telefono);
 		Cliente aux=new Cliente(usuario,pas,p);
 		addUsuario(aux);
 	}

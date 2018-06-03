@@ -4,14 +4,17 @@ import java.util.Scanner;
 import clases.Administrador;
 import clases.Cliente;
 import clases.Loguin;
+import clases.Pasajero;
 
 public class Menu {
 
-	private String us,pas,nombre,apellido,direc,dni,telefono;
+	private String us,pas,nombre,apellido,direc,telefono;
+	private int dni;
 	private static int variable =0;
     private char x;
     private Loguin logueo=new Loguin();
-    private Cliente asd =new Cliente("asd","asd","asd","asd","asd", "asd", "asd");
+    Pasajero p=new Pasajero("carlos","montiel",23223223,"montana 581","4810202");
+    private Cliente asd =new Cliente("asd","asd",p);
     private Administrador maxi=new Administrador("admin","admin");
     private Scanner scan=new Scanner(System.in);
     
@@ -45,12 +48,12 @@ public class Menu {
 			  System.out.println("Ingrese su Apellido:");
 			  apellido=scan.next();
 			  System.out.println("Ingrese su DNI:");
-			  dni=scan.next();
+			  dni=scan.nextInt();
 			  System.out.println("Ingrese su direccion:");
 			  direc=scan.next();
 			  System.out.println("Ingrese su telefono:");
 			  telefono=scan.next();
-			  logueo.registro(us, pas, nombre, apellido, direc, telefono, dni);
+			  logueo.registro(us, pas, nombre, apellido, dni, direc,telefono);
 			  
 		  }
     	

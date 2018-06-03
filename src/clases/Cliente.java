@@ -7,6 +7,7 @@ public class Cliente extends Usuario {
     	  super(usuario,pass);
     	  pasajero=p;
       }
+	
       
 	
 }
