@@ -29,29 +29,29 @@ public class Menu {
     }
     public void registroManual()
     {
-    	 System.out.println("Ingrese su nombre de usuario: ");
+    	 System.out.print("Ingrese su nombre de usuario: ");
 		 us=null;
     	 us=scan.next();
 		  boolean vof=logueo.verificarUsuario(us);
 		  if(vof)
 		  {
-			  System.out.println("El usuario ya existe, intente nuevamente");
+			  System.out.print("El usuario ya existe, intente nuevamente: ");
 			  us=scan.nextLine();
 			  vof=logueo.verificarUsuario(us);  
 		  }
 		  else
 		  {
-			  System.out.println("Ingrese su password:");
+			  System.out.print("Ingrese su password: ");
 			  pas=scan.next();
-			  System.out.println("Ingrese su Nombre:");
+			  System.out.print("Ingrese su Nombre: ");
 			  nombre=scan.next();
-			  System.out.println("Ingrese su Apellido:");
+			  System.out.print("Ingrese su Apellido: ");
 			  apellido=scan.next();
-			  System.out.println("Ingrese su DNI:");
+			  System.out.print("Ingrese su DNI: ");
 			  dni=scan.nextInt();
-			  System.out.println("Ingrese su direccion:");
+			  System.out.print("Ingrese su direccion: ");
 			  direc=scan.next();
-			  System.out.println("Ingrese su telefono:");
+			  System.out.print("Ingrese su telefono: ");
 			  telefono=scan.next();
 			  logueo.registro(us, pas, nombre, apellido, dni, direc,telefono);
 			  
@@ -61,9 +61,9 @@ public class Menu {
     
     public void ingreso()
     {
-    	 System.out.println("Ingrese su usuario: ");
+    	 System.out.print("Ingrese su usuario: ");
 			us=scan.next();
-			System.out.println("Ingrese su Contraseña: ");
+			System.out.print("Ingrese su Contraseña: ");
 			pas=scan.next();
 			if(logueo.verificarIngreso(us, pas) == true)
 			{
@@ -136,7 +136,7 @@ public class Menu {
     public void admElimina()
     {
     	String nombre;
-    	System.out.println("Ingrese el nombre del usuario a eliminar:");
+    	System.out.print("Ingrese el nombre del usuario a eliminar:");
     	nombre=scan.next();
     	maxi.eliminarUsuario(nombre,logueo);
     }
