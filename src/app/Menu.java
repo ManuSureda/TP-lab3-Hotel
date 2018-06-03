@@ -54,20 +54,11 @@ public class Menu {
 			  direc=scan.next();
 			  System.out.print("Ingrese su telefono: ");
 			  telefono=scan.next();
-<<<<<<< HEAD
-			  
-			  /*add exceptions*/
-			  
-			  logueo.registro(us, pas, nombre, apellido, dni, direc,telefono);
-			  
-			  
-			  
-=======
+
 			  System.out.println();
 			  logueo.registro(us, pas, nombre, apellido, dni, direc,telefono);
 			  
 			  
->>>>>>> ed8aa34b88eef03def83bdb0dbd5f7a09d5fd157
 		  }
     	
     }
