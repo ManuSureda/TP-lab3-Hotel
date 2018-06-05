@@ -157,12 +157,28 @@ public class Usuario {
 		int cantPas=sc.nextInt();
 		ArrayList<Pasajero> listaPasajeros=new ArrayList<>();
 		listaPasajeros=cargarPasajero(cantPas, h, l);
+		Date in,out;
+		int dayIn,monthIn,yearIn;
+		int dayOut,monthOut,yearOut;
+		Scanner scan = new Scanner(System.in);
 		
-		System.out.println("Fecha de ingreso: ");
+		System.out.print("Dia de ingreso: ");
+		dayIn = scan.nextInt();
+		System.out.print("Mes de ingreso: ");
+		monthIn = scan.nextInt();
+		System.out.print("Year de ingreso: ");
+		yearIn = scan.nextInt();
+		 in = new Date(dayIn,monthIn,yearIn);
 		
-		//metodo para ingresar fecha
+		System.out.print("Dia de salida: ");
+		dayOut = scan.nextInt();
+		System.out.print("Mes de salida: ");
+		monthOut = scan.nextInt();
+		System.out.print("Year de salida: ");
+		yearOut = scan.nextInt();
+		out = new Date(dayOut,monthOut,yearOut);
 		
-		Fechas f;
+		Fechas f = new Fechas(in,out);
 		
 		System.out.println("Habitaciones disponibles: ");
 		ArrayList<Integer> listaDeHabitaciones=new ArrayList<>();
@@ -197,7 +213,7 @@ public class Usuario {
 			if (listaDeHabitaciones2!=null)
 			{
 				costo=calcularCosto(listaDeHabitaciones2,h);
-				System.out.println("El costo total seria de unos $: "+costo);
+				System.out.println("El costo total seria de: $ "+costo);
 				System.out.println("Desea confirmar la operacion? (s/n): ");
 				confirmacion=sc.next().charAt(0);
 			}
