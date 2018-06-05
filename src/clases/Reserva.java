@@ -9,12 +9,12 @@ public class Reserva {
 	private int id;//tambien puede ser por dni
 	private static int cantId;
 	
-	public Reserva(ArrayList<Pasajero> pasajeros, double costo, boolean usada) 
+	public Reserva(ArrayList<Pasajero> pasajeros, double costo) 
 	{
 		this.pasajeros = pasajeros;
 		this.costo = costo;
-		this.usada = usada;
-		this.id = cantId+1;
+		usada = false;
+		id = cantId+1;
 		cantId++;
 	}
 	
@@ -22,7 +22,7 @@ public class Reserva {
 		return pasajeros;
 	}
 
-
+	
 
 	public void setPasajeros(ArrayList<Pasajero> pasajeros) {
 		this.pasajeros = pasajeros;

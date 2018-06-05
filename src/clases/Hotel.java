@@ -13,7 +13,7 @@ public class Hotel {
 	private HashMap<Integer,Reserva> reservas;
 	private HashMap<Integer,Habitacion> habitaciones; 
 	private ArrayList<Pasajero> registroPasajeros; 	
-	
+
 	public String getNombre() {
 		return nombre;
 	}
@@ -30,7 +30,7 @@ public class Hotel {
 		this.direccion = direccion;
 	}
 
-	
+
 
 	public Recepcionista getRecepcionista() {
 		return recepcionista;
@@ -46,6 +46,10 @@ public class Hotel {
 
 	public void setReservas(HashMap<Integer,Reserva> reservas) {
 		this.reservas = reservas;
+	}
+	public void addReserva(Reserva r)
+	{
+		reservas.put(r.getId(), r);
 	}
 
 	public HashMap<Integer, Habitacion> getHabitaciones() {
@@ -66,7 +70,7 @@ public class Hotel {
 
 	public Hotel(String nombre, String direccion, Recepcionista recepcionista, HashMap<Integer,Reserva> reservas,
 			HashMap<Integer, Habitacion> habitaciones, ArrayList<Pasajero> registroPasajeros) {
-		
+
 		this.nombre = nombre;
 		this.direccion = direccion;
 		this.recepcionista = recepcionista;
@@ -79,29 +83,29 @@ public class Hotel {
 	{
 		habitaciones.put(h.getNumero(), h);
 	}
-	
+
 	public String mostrarHotel()
 	{
 		return nombre+"\nDireccion: "+direccion;
 	}
-	
+
 	public void mostrarDisponibles()
 	{
 		for (Entry<Integer, Habitacion> entry : habitaciones.entrySet()) {
-		    if (entry.getValue().getDispo())
-		    {
-		    	entry.getValue().mostrarHabitacion();
-		    }
+			if (entry.getValue().getDispo())
+			{
+				entry.getValue().mostrarHabitacion();
+			}
 		}
 	}
 
 	public void mostrarNoDisponibles()
 	{
 		for (Entry<Integer, Habitacion> entry : habitaciones.entrySet()) {
-		    if (!entry.getValue().getDispo())
-		    {
-		    	entry.getValue().mostrarHabitacion();
-		    }
+			if (!entry.getValue().getDispo())
+			{
+				entry.getValue().mostrarHabitacion();
+			}
 		}
 	}
 
@@ -122,13 +126,50 @@ public class Hotel {
 			rta=0;//si devuelve 0 quiere decir que el num de habitacion ingresado es incorrecto y deven ingresar otro numero
 		}
 		return rta;
-		
+
 	}
 
-	
+
 	public HashMap getMapHabitacion()
 	{
 		return habitaciones;
 	}
 
+
+	public ArrayList<Integer> mostrarHabitacionDisponibles(Fechas f, int cant) //va a devolver los numeros de las habitaciones que esten disponibles
+	{
+		ArrayList<Integer> rta=new ArrayList<>();
+		boolean flag=false;
+		int cantAux=0;
+
+		for (Entry<Integer, Habitacion> entry : habitaciones.entrySet()) // deveriamos cambiarlo por un while
+		{
+			if(entry.getValue().revisarFechas(f.getFechaInDate(), f.getFechaOutDate()) && cantAux<cant) 
+			{
+
+				cantAux+=entry.getValue().getCapacidad();
+
+			}
+			if (cantAux>=cant)
+			{
+				flag=true;
+			}
+		}
+
+		if (flag)
+		{
+			for (Entry<Integer, Habitacion> entry : habitaciones.entrySet()) 
+			{
+				if(entry.getValue().revisarFechas(f.getFechaInDate(), f.getFechaOutDate())) 
+				{
+					entry.getValue().mostrarHabitacion();
+					rta.add(entry.getValue().getNumero());
+				}
+			}
+			return rta;
+		}
+		else
+			System.out.println("Lo sentimos, pero no hay suficiente espacio en el hotel.");
+			return null;
+	}
 }
