@@ -7,6 +7,7 @@ import java.util.HashMap;
 import java.util.Iterator;
 import java.util.Map;
 import java.util.Scanner;
+import java.util.concurrent.TimeUnit;
 
 public class Usuario implements Serializable{
 
@@ -136,20 +137,37 @@ public class Usuario implements Serializable{
 		return rta;
 	}
 
-	public double calcularCosto(ArrayList<Integer> hab,Hotel h)
-	{
-		double rta=0;
-
-		if (hab!=null)
-		{
-			int i=0;
-			while (i<hab.size())//revisar si no tiene que tener un -1
-			{
-				rta+=h.getHabitaciones().get(i).getCosto();
-			}
-		}
-		return rta;
-	}
+//	public double calcularCosto(ArrayList<Integer> hab,Hotel h)
+//	{
+//		double rta=0;
+//
+//		if (hab!=null)
+//		{
+//			int i=0;
+//			while (i<hab.size())//revisar si no tiene que tener un -1
+//			{
+//				rta+=h.getHabitaciones().get(i).getCosto();
+//			}
+//		}
+//		return rta;
+//	}
+	
+	
+	public double calcularCostoTotal(ArrayList<Integer> hab,Hotel h,Date ini,Date fin)
+    {   double rta=0;
+        if (hab!=null)
+        {
+            int i=0;
+            while (i<hab.size())//revisar si no tiene que tener un -1
+            {
+                rta+=h.getHabitaciones().get(i).getCosto();
+            }
+        }
+        long startTime = ini.getTime();
+        long endTime = fin.getTime();
+        long diffTime = endTime - startTime;
+        return (double)(TimeUnit.DAYS.convert(diffTime, TimeUnit.MILLISECONDS) * rta);
+   }
 
 	public void reservar(Hotel h, Loguin l)
 	{
