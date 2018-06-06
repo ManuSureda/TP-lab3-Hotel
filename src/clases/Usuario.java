@@ -255,7 +255,7 @@ public class Usuario implements Serializable{
 		}
 		if (listaDeHabitaciones2!=null)
 		{
-			costo=calcularCosto(listaDeHabitaciones2,h);// corregir esta funcion
+			costo=calcularCostoTotal(listaDeHabitaciones2,h,in,out);
 			System.out.println("El costo total seria de unos $: "+costo);
 
 
