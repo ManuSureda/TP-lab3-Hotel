@@ -1,8 +1,9 @@
 package clases;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 
-public class Reserva {
+public class Reserva implements Serializable{
 	private ArrayList<Pasajero> pasajeros;
 	private double costo; 
 	private boolean usada; 

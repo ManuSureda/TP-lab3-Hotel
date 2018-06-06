@@ -1,8 +1,9 @@
 package clases;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 
-public class Registro {
+public class Registro implements Serializable{
 	private ArrayList<Habitacion> habitaciones;
 	private Fechas fechas; 
 	

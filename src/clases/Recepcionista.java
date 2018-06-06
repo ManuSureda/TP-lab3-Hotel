@@ -1,10 +1,11 @@
 package clases;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.Map;
 
-public class Recepcionista extends Usuario {
+public class Recepcionista extends Usuario implements Serializable{
 
 	public Recepcionista(String usuario, String contaseña) 
 	{

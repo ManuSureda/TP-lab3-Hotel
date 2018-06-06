@@ -1,12 +1,13 @@
 package clases;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.Map;
 import java.util.Map.Entry;
 
-public class Hotel {
+public class Hotel implements Serializable{
 	private String nombre;
 	private String direccion; 
 	private Recepcionista recepcionista;

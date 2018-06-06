@@ -1,5 +1,6 @@
 package clases;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.HashMap;
@@ -7,7 +8,7 @@ import java.util.Iterator;
 import java.util.Map;
 import java.util.Scanner;
 
-public class Usuario {
+public class Usuario implements Serializable{
 
 	private String user;
 	private String pass;
@@ -131,6 +132,7 @@ public class Usuario {
 		}
 
 		System.out.println("Gracias por elegirnos :) ");
+		sc.close();
 		return rta;
 	}
 
@@ -178,6 +180,8 @@ public class Usuario {
 		System.out.print("Year de salida: ");
 		yearOut = scan.nextInt();
 		out = new Date(dayOut,monthOut,yearOut);
+		
+		scan.close();
 
 		Fechas f = new Fechas(in,out);
 
@@ -240,16 +244,17 @@ public class Usuario {
 		}
 		System.out.println("Desea confirmar la operacion? (s/n): ");
 		confirmacion=sc.next().charAt(0);
-
+		sc.close();
 		if (confirmacion=='s')
 		{
 			r= new Reserva(listaPasajeros,costo);
 			h.addReserva(r);
 		}
+		
 	}
 
 
-
+	
 
 	//	
 	//	

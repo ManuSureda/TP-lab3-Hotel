@@ -1,5 +1,6 @@
 package clases;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.Iterator;
@@ -7,7 +8,7 @@ import java.util.Iterator;
 import clases.Disponible;
 import clases.Fechas;
 
-public class Habitacion {
+public class Habitacion implements Serializable{
 	private int numero;
 	private int capacidad;
 	private Disponible disponible;

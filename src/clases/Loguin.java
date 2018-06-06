@@ -1,9 +1,10 @@
 package clases;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Iterator;
 
-public class Loguin {
+public class Loguin implements Serializable{
      
      private ArrayList<Usuario>listaUsuario=new ArrayList<Usuario>();
      private boolean admin=false;

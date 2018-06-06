@@ -1,8 +1,9 @@
 package clases;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 
-public class Administrador extends Usuario{
+public class Administrador extends Usuario implements Serializable{
 
 	public Administrador(String usuario, String contaseña) 
 	{

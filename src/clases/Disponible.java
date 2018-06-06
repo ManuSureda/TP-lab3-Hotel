@@ -1,6 +1,8 @@
 package clases;
 
-public class Disponible {
+import java.io.Serializable;
+
+public class Disponible implements Serializable{
 	
 	private boolean disponibilidad;
 	private String detalle;
