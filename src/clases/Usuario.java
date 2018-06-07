@@ -133,7 +133,7 @@ public class Usuario implements Serializable{
 		}
 
 		System.out.println("Gracias por elegirnos :) ");
-		sc.close();
+		
 		return rta;
 	}
 
@@ -157,10 +157,11 @@ public class Usuario implements Serializable{
     {   double rta=0;
         if (hab!=null)
         {
-            int i=0;
-            while (i<hab.size())//revisar si no tiene que tener un -1
+          
+            for (int i:hab)//revisar si no tiene que tener un -1
             {
                 rta+=h.getHabitaciones().get(i).getCosto();
+                
             }
         }
         long startTime = ini.getTime();
@@ -168,28 +169,15 @@ public class Usuario implements Serializable{
         long diffTime = endTime - startTime;
         return (double)(TimeUnit.DAYS.convert(diffTime, TimeUnit.MILLISECONDS) * rta);
    }
-	public void ingresoFechasEstadia(Fechas f)
+	public void ingresoFechasEstadia(Fechas f,int din,int dout,int min,int mout,int yin,int yout)
     {
-        Scanner scan=new Scanner(System.in);
+       
         int dia,mes,anio=0;
         Date preFecha;
-        System.out.println("Ingrese dia de Ingreso");
-        dia=scan.nextInt();
-        System.out.println("Ingrese mes de Ingreso");
-        mes=scan.nextInt();
-        System.out.println("Ingrese año de Ingreso");
-        anio=scan.nextInt();
-        preFecha=new Date(anio,mes,dia);
+        preFecha=new Date(yin,min,din);
         f.setFechaIn(preFecha);
-        System.out.println("Ingrese dia de Salida");
-        dia=scan.nextInt();
-        System.out.println("Ingrese mes de Salida");
-        mes=scan.nextInt();
-        System.out.println("Ingrese año de Salida");
-        anio=scan.nextInt();
-        preFecha=new Date(anio,mes,dia);
+        preFecha=new Date(yout,mout,dout);
         f.setFechaOut(preFecha);
-        scan.close();
     }
 
 	public void reservar(Hotel h, Loguin l)
@@ -200,15 +188,10 @@ public class Usuario implements Serializable{
 		int cantPas=sc.nextInt();
 		ArrayList<Pasajero> listaPasajeros=new ArrayList<>();
 		listaPasajeros=cargarPasajero(cantPas, h, l);
-
-		Date in,out;
-		int dayIn;
-		int monthIn;
-		int yearIn;
-		int dayOut,monthOut,yearOut;
 		
 		Fechas f = new Fechas();
-		ingresoFechasEstadia(f);
+		
+		ingresoFechasEstadia(f,1,4,5,5,2018,2018);
 
 		System.out.println("Habitaciones disponibles: ");
 		ArrayList<Integer> listaDeHabitaciones=new ArrayList<>();
@@ -269,7 +252,7 @@ public class Usuario implements Serializable{
 		}
 		System.out.println("Desea confirmar la operacion? (s/n): ");
 		confirmacion=sc.next().charAt(0);
-		sc.close();
+		//sc.close();
 		if (confirmacion=='s')
 		{
 			r= new Reserva(listaPasajeros,costo);
