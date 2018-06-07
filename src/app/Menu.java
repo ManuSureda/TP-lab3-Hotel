@@ -1,11 +1,15 @@
 package app;
 
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.HashMap;
 import java.util.Scanner;
 import clases.Administrador;
 import clases.Cliente;
+import clases.Habitacion;
 import clases.Loguin;
 import clases.Pasajero;
+import clases.Reserva;
 
 public class Menu {
 
@@ -19,9 +23,12 @@ public class Menu {
     private Administrador maxi=new Administrador("admin","admin");
     private Scanner scan=new Scanner(System.in);
     
+    
+
+    
     public Menu()
     {
-    	
+    
     }
     public void harcodeados()
     {

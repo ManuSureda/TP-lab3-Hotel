@@ -98,25 +98,25 @@ public class Usuario implements Serializable{
 			else 
 			{
 				System.out.println("Ingrese su nombre: ");
-				String n=sc.nextLine();
+				String n=sc.next();
 				System.out.println("Ingrese su apellido: ");
-				String apellido= sc.nextLine();
+				String apellido= sc.next();
 				System.out.println("Ingrese su DNI: ");
 				int DNI= sc.nextInt();// crear un metodo para ver que no meta un dni incorrecto
 				System.out.println("Ingrese su direccion: "); 
-				String direccion=sc.nextLine();
+				String direccion=sc.next();
 				System.out.println("Ingrese su telefono: ");
-				String telefono=sc.nextLine();
+				String telefono=sc.next();
 				p= new Pasajero(n,apellido,DNI,direccion,telefono);
 
 				System.out.println("Desea registrarse como usuario? (s/n): ");
 				flag2=sc.next().charAt(0);
-				if (flag2=='s')
+				if (flag2=='s' || flag2=='S')
 				{
 					System.out.println("Ingrese un nombre de usuario: ");
-					String name=sc.nextLine();
+					String name=sc.next();
 					System.out.println("Ingrese su contraseña: ");
-					String pass=sc.nextLine();
+					String pass=sc.next();
 
 					Usuario u= new Cliente(name, pass, p);
 					l.addUsuario(u);
@@ -168,6 +168,29 @@ public class Usuario implements Serializable{
         long diffTime = endTime - startTime;
         return (double)(TimeUnit.DAYS.convert(diffTime, TimeUnit.MILLISECONDS) * rta);
    }
+	public void ingresoFechasEstadia(Fechas f)
+    {
+        Scanner scan=new Scanner(System.in);
+        int dia,mes,anio=0;
+        Date preFecha;
+        System.out.println("Ingrese dia de Ingreso");
+        dia=scan.nextInt();
+        System.out.println("Ingrese mes de Ingreso");
+        mes=scan.nextInt();
+        System.out.println("Ingrese año de Ingreso");
+        anio=scan.nextInt();
+        preFecha=new Date(anio,mes,dia);
+        f.setFechaIn(preFecha);
+        System.out.println("Ingrese dia de Salida");
+        dia=scan.nextInt();
+        System.out.println("Ingrese mes de Salida");
+        mes=scan.nextInt();
+        System.out.println("Ingrese año de Salida");
+        anio=scan.nextInt();
+        preFecha=new Date(anio,mes,dia);
+        f.setFechaOut(preFecha);
+        scan.close();
+    }
 
 	public void reservar(Hotel h, Loguin l)
 	{
@@ -179,29 +202,13 @@ public class Usuario implements Serializable{
 		listaPasajeros=cargarPasajero(cantPas, h, l);
 
 		Date in,out;
-		int dayIn,monthIn,yearIn;
+		int dayIn;
+		int monthIn;
+		int yearIn;
 		int dayOut,monthOut,yearOut;
-		Scanner scan = new Scanner(System.in);
-
-		System.out.print("Dia de ingreso: ");
-		dayIn = scan.nextInt();
-		System.out.print("Mes de ingreso: ");
-		monthIn = scan.nextInt();
-		System.out.print("Year de ingreso: ");
-		yearIn = scan.nextInt();
-		in = new Date(dayIn,monthIn,yearIn);
-
-		System.out.print("Dia de salida: ");
-		dayOut = scan.nextInt();
-		System.out.print("Mes de salida: ");
-		monthOut = scan.nextInt();
-		System.out.print("Year de salida: ");
-		yearOut = scan.nextInt();
-		out = new Date(dayOut,monthOut,yearOut);
 		
-		scan.close();
-
-		Fechas f = new Fechas(in,out);
+		Fechas f = new Fechas();
+		ingresoFechasEstadia(f);
 
 		System.out.println("Habitaciones disponibles: ");
 		ArrayList<Integer> listaDeHabitaciones=new ArrayList<>();
@@ -255,7 +262,7 @@ public class Usuario implements Serializable{
 		}
 		if (listaDeHabitaciones2!=null)
 		{
-			costo=calcularCostoTotal(listaDeHabitaciones2,h,in,out);
+			costo=calcularCostoTotal(listaDeHabitaciones2,h,f.getFechaInDate(),f.getFechaOutDate());
 			System.out.println("El costo total seria de unos $: "+costo);
 
 
@@ -271,8 +278,6 @@ public class Usuario implements Serializable{
 		
 	}
 
-
-	
 
 	//	
 	//	

@@ -12,6 +12,10 @@ public class Fechas implements Serializable{
 		fechaIn = fechaInParam;
 		fechaOut = fechaOutParam;
 	}
+	public Fechas()
+	{
+		
+	}
 	
 	
 	
