@@ -266,7 +266,7 @@ public class Usuario implements Serializable{
 		}
 		System.out.println("Desea confirmar la operacion? (s/n): ");
 		confirmacion=sc.next().charAt(0);
-		//sc.close();
+		
 		if (confirmacion=='s')
 		{
 			r= new Reserva(listaPasajeros,costo);
