@@ -169,15 +169,29 @@ public class Usuario implements Serializable{
         long diffTime = endTime - startTime;
         return (double)(TimeUnit.DAYS.convert(diffTime, TimeUnit.MILLISECONDS) * rta);
    }
-	public void ingresoFechasEstadia(Fechas f,int din,int dout,int min,int mout,int yin,int yout)
+	public void ingresoFechasEstadia(Fechas f)
     {
-       
-        int dia,mes,anio=0;
-        Date preFecha;
-        preFecha=new Date(yin,min,din);
-        f.setFechaIn(preFecha);
-        preFecha=new Date(yout,mout,dout);
-        f.setFechaOut(preFecha);
+		Scanner scan=new Scanner(System.in);
+        int day,month,year=0;
+        
+        System.out.print("Dia de ingreso: ");
+        day = scan.nextInt();
+        System.out.print("Mes de ingreso: ");
+        month = scan.nextInt();
+        System.out.print("Year de ingreso: ");
+        year = scan.nextInt();
+        Date a = new Date(day,month,year);
+
+        System.out.print("Dia de salida: ");
+        day = scan.nextInt();
+        System.out.print("Mes de salida: ");
+        month = scan.nextInt();
+        System.out.print("Year de salida: ");
+        year = scan.nextInt();
+        Date  b = new Date(day,month,year);
+        
+        f.setFechaIn(a);
+        f.setFechaOut(b);
     }
 
 	public void reservar(Hotel h, Loguin l)
@@ -191,7 +205,7 @@ public class Usuario implements Serializable{
 		
 		Fechas f = new Fechas();
 		
-		ingresoFechasEstadia(f,1,4,5,5,2018,2018);
+		ingresoFechasEstadia(f);
 
 		System.out.println("Habitaciones disponibles: ");
 		ArrayList<Integer> listaDeHabitaciones=new ArrayList<>();
