@@ -173,4 +173,18 @@ public class Hotel implements Serializable{
 			System.out.println("Lo sentimos, pero no hay suficiente espacio en el hotel.");
 			return null;
 	}
+	
+	public void mostrarReservas()
+	{
+		Iterator it= reservas.entrySet().iterator();
+		Reserva aux;
+		while (it.hasNext())
+		{
+			
+			Map.Entry entry = (Map.Entry)it.next();
+			aux=(Reserva)entry.getValue();
+			aux.mostrarReserva();
+		}
+			
+	}
 }

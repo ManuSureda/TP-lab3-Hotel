@@ -93,14 +93,32 @@ public class Reserva implements Serializable{
 		return rta;
 	}
 	
-	public void mostrarReserva()
-	{
-		//System.out.println("-----------------");
+	
+
+	
+	public void mostrarReserva() {
+		System.out.println("Reserva: "+id);
+		System.out.println("Costo: "+costo);
+		if (usada==true)
+			System.out.println("Esta reserva ya fue utilizada");
+		else
+			System.out.println("Esta reserva aun no fue utilizada");
 		for (Pasajero aux:pasajeros)
 		{
-			aux.toString();
+			System.out.println(aux.toString());
 		}
 	}
 	
+	
+	
+//	public void mostrarReserva()
+//	{
+//		//System.out.println("-----------------");
+//		for (Pasajero aux:pasajeros)
+//		{
+//			aux.toString();
+//		}
+//	}
+//	
 	
 }

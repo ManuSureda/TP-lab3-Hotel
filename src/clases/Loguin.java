@@ -8,16 +8,25 @@ public class Loguin implements Serializable{
      
      private ArrayList<Usuario>listaUsuario=new ArrayList<Usuario>();
      private boolean admin=false;
+     private Usuario usuarioLogueado;
      
 	public Loguin()
 	{
 		
 	}
-	
+	public Usuario getUsuario() 
+	{
+		return usuarioLogueado;
+	}
+	public void salirSistema()
+	{
+		usuarioLogueado=null;
+	}
 	public boolean verificarIngreso(String us,String pas)
 	{
        Iterator<Usuario> it = listaUsuario.iterator();
 		Usuario aux;
+		
 		while(it.hasNext())
 		{   aux=it.next();
 		   
@@ -27,7 +36,7 @@ public class Loguin implements Serializable{
 			       admin=true;
 				}	
 				
-			
+			    usuarioLogueado=aux;
 				return true;
 			}
 		}

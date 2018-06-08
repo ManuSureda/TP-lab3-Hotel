@@ -133,66 +133,60 @@ public class Usuario implements Serializable{
 		}
 
 		System.out.println("Gracias por elegirnos :) ");
-		
+
 		return rta;
 	}
 
-//	public double calcularCosto(ArrayList<Integer> hab,Hotel h)
-//	{
-//		double rta=0;
-//
-//		if (hab!=null)
-//		{
-//			int i=0;
-//			while (i<hab.size())//revisar si no tiene que tener un -1
-//			{
-//				rta+=h.getHabitaciones().get(i).getCosto();
-//			}
-//		}
-//		return rta;
-//	}
-	
-	
 	public double calcularCostoTotal(ArrayList<Integer> hab,Hotel h,Date ini,Date fin)
-    {   double rta=0;
-        if (hab!=null)
-        {
-          
-            for (int i:hab)//revisar si no tiene que tener un -1
-            {
-                rta+=h.getHabitaciones().get(i).getCosto();
-                
-            }
-        }
-        long startTime = ini.getTime();
-        long endTime = fin.getTime();
-        long diffTime = endTime - startTime;
-        return (double)(TimeUnit.DAYS.convert(diffTime, TimeUnit.MILLISECONDS) * rta);
-   }
-	public void ingresoFechasEstadia(Fechas f)
-    {
-		Scanner scan=new Scanner(System.in);
-        int day,month,year=0;
-        
-        System.out.print("Dia de ingreso: ");
-        day = scan.nextInt();
-        System.out.print("Mes de ingreso: ");
-        month = scan.nextInt();
-        System.out.print("Year de ingreso: ");
-        year = scan.nextInt();
-        Date a = new Date(day,month,year);
+	{   
+		double rta=0;
+		double x;
+		if (hab!=null)
+		{
 
-        System.out.print("Dia de salida: ");
-        day = scan.nextInt();
-        System.out.print("Mes de salida: ");
-        month = scan.nextInt();
-        System.out.print("Year de salida: ");
-        year = scan.nextInt();
-        Date  b = new Date(day,month,year);
-        
-        f.setFechaIn(a);
-        f.setFechaOut(b);
-    }
+			for (int i:hab)//revisar si no tiene que tener un -1
+			{
+				rta+=h.getHabitaciones().get(i).getCosto();
+
+			}
+			long startTime = ini.getTime();
+			long endTime = fin.getTime();
+			long diffTime = endTime - startTime;
+
+			x=TimeUnit.DAYS.convert(diffTime, TimeUnit.MILLISECONDS);
+
+			return x*rta;
+		}
+		else
+		{
+			return 0;
+		}
+
+	}
+	public void ingresoFechasEstadia(Fechas f)
+	{
+		Scanner scan=new Scanner(System.in);
+		int day,month,year=0;
+
+		System.out.print("Dia de ingreso: ");
+		day = scan.nextInt();
+		System.out.print("Mes de ingreso: ");
+		month = scan.nextInt();
+		System.out.print("Year de ingreso: ");
+		year = scan.nextInt();
+		Date a = new Date(year,month,day);
+
+		System.out.print("Dia de salida: ");
+		day = scan.nextInt();
+		System.out.print("Mes de salida: ");
+		month = scan.nextInt();
+		System.out.print("Year de salida: ");
+		year = scan.nextInt();
+		Date  b = new Date(year,month,day);
+
+		f.setFechaIn(a);
+		f.setFechaOut(b);
+	}
 
 	public void reservar(Hotel h, Loguin l)
 	{
@@ -202,9 +196,9 @@ public class Usuario implements Serializable{
 		int cantPas=sc.nextInt();
 		ArrayList<Pasajero> listaPasajeros=new ArrayList<>();
 		listaPasajeros=cargarPasajero(cantPas, h, l);
-		
+
 		Fechas f = new Fechas();
-		
+
 		ingresoFechasEstadia(f);
 
 		System.out.println("Habitaciones disponibles: ");
@@ -260,105 +254,30 @@ public class Usuario implements Serializable{
 		if (listaDeHabitaciones2!=null)
 		{
 			costo=calcularCostoTotal(listaDeHabitaciones2,h,f.getFechaInDate(),f.getFechaOutDate());
-			System.out.println("El costo total seria de unos $: "+costo);
+			if(costo==0)
+			{
+				System.out.println("ERROR EN LA OPERACION");
+				return;
+			}
+
+			else
+				System.out.println("El costo total seria de unos $: "+costo);
 
 
 		}
 		System.out.println("Desea confirmar la operacion? (s/n): ");
 		confirmacion=sc.next().charAt(0);
-		
+
 		if (confirmacion=='s')
 		{
 			r= new Reserva(listaPasajeros,costo);
+			for (Integer i:listaDeHabitaciones2)
+			{
+				h.getHabitaciones().get(i).addFechaOcupacion(f);
+			}
 			h.addReserva(r);
 		}
-		
+
 	}
-
-
-	//	
-	//	
-	//	
-	//	public void reservar(Hotel h, Loguin l)
-	//	{
-	//		Reserva r;
-	//		Scanner sc= new Scanner(System.in);
-	//		System.out.println("Ingrese la cantidad de pasajeros: ");
-	//		int cantPas=sc.nextInt();
-	//		ArrayList<Pasajero> listaPasajeros=new ArrayList<>();
-	//		listaPasajeros=cargarPasajero(cantPas, h, l);
-	//		Date in,out;
-	//		int dayIn,monthIn,yearIn;
-	//		int dayOut,monthOut,yearOut;
-	//		Scanner scan = new Scanner(System.in);
-	//		
-	//		System.out.print("Dia de ingreso: ");
-	//		dayIn = scan.nextInt();
-	//		System.out.print("Mes de ingreso: ");
-	//		monthIn = scan.nextInt();
-	//		System.out.print("Year de ingreso: ");
-	//		yearIn = scan.nextInt();
-	//		 in = new Date(dayIn,monthIn,yearIn);
-	//		
-	//		System.out.print("Dia de salida: ");
-	//		dayOut = scan.nextInt();
-	//		System.out.print("Mes de salida: ");
-	//		monthOut = scan.nextInt();
-	//		System.out.print("Year de salida: ");
-	//		yearOut = scan.nextInt();
-	//		out = new Date(dayOut,monthOut,yearOut);
-	//		
-	//		Fechas f = new Fechas(in,out);
-	//		
-	//		System.out.println("Habitaciones disponibles: ");
-	//		ArrayList<Integer> listaDeHabitaciones=new ArrayList<>();
-	//		listaDeHabitaciones=h.mostrarHabitacionDisponibles(f,cantPas);
-	//		
-	//		double costo=0;
-	//		char confirmacion='n';
-	//		if (listaDeHabitaciones!=null)
-	//		{
-	//			ArrayList<Integer> listaDeHabitaciones2=new ArrayList<>();
-	//			char control;
-	//			System.out.println("Elija las habitaciones que desea ocupar (una por una): ");
-	//			int cantAux=0;
-	//			Integer hab;
-	//			while (cantAux<cantPas)
-	//			{
-	//				hab=sc.nextInt();
-	//				cantAux+=h.getHabitaciones().get(hab).getCapacidad();
-	//				listaDeHabitaciones2.add(hab);
-	//			}
-	//			System.out.println("Desea contratar otra habitacion? (s/n): ");
-	//			control=sc.next().charAt(0);
-	//			while (control=='s')
-	//			{
-	//				hab=sc.nextInt();
-	//				
-	//				listaDeHabitaciones2.add(hab);
-	//				System.out.println("Desea contratar otra habitacion? (s/n): ");
-	//				control=sc.next().charAt(0);
-	//			}
-	//			
-	//			if (listaDeHabitaciones2!=null)
-	//			{
-	//				costo=calcularCosto(listaDeHabitaciones2,h);
-	//				System.out.println("El costo total seria de: $ "+costo);
-	//				System.out.println("Desea confirmar la operacion? (s/n): ");
-	//				confirmacion=sc.next().charAt(0);
-	//			}
-	//			
-	//			
-	//		}
-	//		
-	//		if (confirmacion=='s')
-	//		{
-	//			r= new Reserva(listaPasajeros,costo);
-	//			h.addReserva(r);
-	//		}
-	//		
-	//		
-	//		
-	//	}
 
 }

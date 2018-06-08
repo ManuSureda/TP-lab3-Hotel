@@ -85,7 +85,10 @@ public class Habitacion implements Serializable{
 	public ArrayList<Fechas> getfechasOcupacionArray(){
 		return fechasOcupacion;
 	}
-	
+	public void addFechaOcupacion(Fechas f)
+	{
+		fechasOcupacion.add(f);
+	}
 	public void mostrarHabitacion() {
 		System.out.println("----------------");
 		System.out.println("Numero de habitacion: "+numero);

@@ -1,6 +1,7 @@
 package app;
 
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.Scanner;
 
@@ -22,6 +23,8 @@ public class Main {
 		Habitacion h1=new Habitacion(1,4,1500);
 		Habitacion h2=new Habitacion(2,3,1300);
 		Habitacion h3=new Habitacion(3,2,1200);
+		Date f1=new Date(2018,5,1);
+		Date f2=new Date(2018,5,5);
 		Recepcionista aux=new Recepcionista("aux","asd");
 		Pasajero p1=new Pasajero("maxi","morales",41669179,"manita123","tuvieja");
 		Loguin log=new Loguin();
@@ -31,11 +34,11 @@ public class Main {
 		habitaciones.put(h3.getNumero(), h3);
 		pasajeros.add(p1);
 		aux.reservar(hotelin,log);
-
+		hotelin.mostrarReservas();
+        aux.habitacionesDisponibles(f1, f2, hotelin);
 		Scanner sc=new Scanner(System.in);
 		sc.close();
-		/*Menu menu=new Menu();
-         menu.Switch();*/
+		
 
 
 	}
