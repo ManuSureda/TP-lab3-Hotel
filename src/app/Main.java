@@ -34,10 +34,8 @@ public class Main {
 		habitaciones.put(h3.getNumero(), h3);
 		pasajeros.add(p1);
 		aux.reservar(hotelin,log);
-		hotelin.mostrarReservas();
-        aux.habitacionesDisponibles(f1, f2, hotelin);
-		Scanner sc=new Scanner(System.in);
-		sc.close();
+		aux.reservar(hotelin,log);
+		
 		
 
 

@@ -10,10 +10,9 @@ public class Reserva implements Serializable{
 	private ArrayList<Pasajero> pasajeros;
 	private double costo; 
 	private boolean usada; 
-	private int id;//tambien puede ser por dni
+	private int id;   //tambien puede ser por dni
 	private static int cantId;
-	private HashMap <Integer,Fechas> fechas=new HashMap();
-	private HashMap <Integer,ArrayList>hab=new HashMap();
+
 	
 	public Reserva(ArrayList<Pasajero> pasajeros, double costo) 
 	{
@@ -22,23 +21,6 @@ public class Reserva implements Serializable{
 		usada = false;
 		id = cantId+1;
 		cantId++;
-	}
-	public Fechas devolverFecha(int a)
-	{
-		return fechas.get(a);
-	}
-	public ArrayList devolverHab(int a)
-	{	
-		
-		ArrayList<Integer>num;
-		num=hab.get(a);
-				
-		return num;
-	}
-	public void agregarHyF(int key,Fechas fecha,ArrayList habi)
-	{
-		fechas.put(key,fecha);
-		hab.put(key,habi);
 	}
 	
 	public ArrayList<Pasajero> getPasajeros() {
@@ -132,15 +114,5 @@ public class Reserva implements Serializable{
 	}
 	
 	
-	
-//	public void mostrarReserva()
-//	{
-//		//System.out.println("-----------------");
-//		for (Pasajero aux:pasajeros)
-//		{
-//			aux.toString();
-//		}
-//	}
-//	
 	
 }

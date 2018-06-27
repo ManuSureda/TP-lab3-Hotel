@@ -24,16 +24,7 @@ public class Habitacion implements Serializable{
 		disponible = new Disponible();
 		fechasOcupacion = new ArrayList<Fechas>();
 	}
-	public void removerFecha(Fechas fecha)
-	{
-		for(Fechas a:fechasOcupacion)
-		{
-			if(fecha.getFechaInDate()==a.getFechaInDate() && fecha.getFechaOutDate()==a.getFechaOutDate())
-			{
-				fechasOcupacion.remove(a);
-			}
-		}
-	}
+	
 	public boolean getDispo()
 	{
 		boolean rta=false;
