@@ -28,6 +28,10 @@ public class Registro implements Serializable{
 		this.fechas = fechas;
 	}
 	
+	public ArrayList retornarhab()
+	{
+		return habitaciones;
+	}
 	
 	
 }

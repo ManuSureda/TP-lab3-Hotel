@@ -15,6 +15,12 @@ public class Hotel implements Serializable{
 	private HashMap<Integer,Habitacion> habitaciones; 
 	private ArrayList<Pasajero> registroPasajeros; 	
 
+	
+	
+	public void eliminarReserva(int a)
+	{
+		reservas.remove(a);
+	}
 	public String getNombre() {
 		return nombre;
 	}

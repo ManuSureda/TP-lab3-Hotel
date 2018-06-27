@@ -13,7 +13,7 @@ public class Usuario implements Serializable{
 
 	private String user;
 	private String pass;
-
+	
 
 	public Usuario(String usuario,String contaseña)
 	{
@@ -275,9 +275,46 @@ public class Usuario implements Serializable{
 			{
 				h.getHabitaciones().get(i).addFechaOcupacion(f);
 			}
+			r.agregarHyF(r.getId(),f,listaDeHabitaciones2);
 			h.addReserva(r);
+			
 		}
 
+	}
+	
+	public void cancelarReserva(Hotel hotel,int a)
+	{
+		HashMap<Integer,Reserva>mapareserva=hotel.getReservas();
+		HashMap<Integer,Habitacion>mapahab=hotel.getMapHabitacion();
+		Iterator it= mapareserva.entrySet().iterator();
+		boolean tof=true;
+		ArrayList<Integer> hab;
+		Habitacion habitacion;
+		Fechas fecha;
+		Reserva aux;
+		while(it.hasNext() && tof==true)
+		{	
+			Map.Entry entry = (Map.Entry) it.next();
+			aux=(Reserva) entry;
+			
+			if(aux.getId()==a)
+			{
+				hab=aux.devolverHab(a);
+				fecha=aux.devolverFecha(a);
+				for(int c:hab)
+				{
+					
+					mapahab.get(c).removerFecha(fecha);
+					
+				}
+				hotel.eliminarReserva(a);
+				hotel.setHabitaciones(mapahab);
+				hotel.setReservas(mapareserva);
+			}
+			
+		}
+		
+		
 	}
 
 }
